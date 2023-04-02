@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        {
+          入职日期: 43678,
+          姓名: '高大山',
+          工号: 20089,
+          手机号: 13041131879,
+          转正日期: 43678,
+        },
+        {
+          入职日期: 43780,
+          姓名: '章三',
+          工号: 20090,
+          手机号: 13041131880,
+          转正日期: 43780,
+        },
+        {
+          入职日期: 43600,
+          姓名: '李四',
+          工号: 20091,
+          手机号: 13041131881,
+          转正日期: 43600,
+        },
+        {
+          入职日期: 43578,
+          姓名: '王武',
+          工号: 20092,
+          手机号: 13041131882,
+          转正日期: 43578,
+        },
+      ];
+
+      const newArr = arr.map(({ 入职日期, 姓名, 工号, 手机号, 转正日期 }) => ({
+        timeOfEntry: 入职日期,
+        username: 姓名,
+        workNumber: 工号,
+        mobile: 手机号,
+        correctionTime: 转正日期,
+      }));
+
+      console.log(newArr);
+    </script>
+  </body>
+</html>

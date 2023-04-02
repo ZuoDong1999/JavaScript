@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let array = [];
+      for (let index = 1; index <= 5; index++) {
+        let age = +prompt(`请输入第${index}个年龄`);
+        if (age > 0 && age < 100) {
+          array.push(age);
+        }
+      }
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element >= 18) {
+          console.log(element);
+        }
+      }
+    </script>
+  </body>
+</html>

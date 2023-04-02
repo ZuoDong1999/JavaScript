@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = [
+        {
+          id: '604e21feb205b95968e13129',
+          pid: '0',
+          name: '总裁办',
+        },
+        {
+          id: '604e223fb205b95968e1312b',
+          pid: '0',
+          name: '人事部',
+        },
+        {
+          id: '604e2251b205b95968e1312c',
+          pid: '0',
+          name: '财务部',
+        },
+        {
+          id: '604e2262b205b95968e1312d',
+          pid: '604e2251b205b95968e1312c',
+          name: '财务核算部',
+        },
+        {
+          id: '604e227db205b95968e1312e',
+          pid: '604e2251b205b95968e1312c',
+          name: '税务管理部',
+        },
+        {
+          id: '604e2297b205b95968e1312f',
+          pid: '604e2251b205b95968e1312c',
+          name: '薪资管理部',
+        },
+        {
+          id: '6051ad90e93db6522c1d00d2',
+          pid: '0',
+          name: '技术部',
+        },
+        {
+          id: '6051adb6e93db6522c1d00d3',
+          pid: '6051ad90e93db6522c1d00d2',
+          name: 'Java研发部',
+        },
+        {
+          id: '6051add6e93db6522c1d00d4',
+          pid: '6051ad90e93db6522c1d00d2',
+          name: 'Python研发部',
+        },
+        {
+          id: '6051adefe93db6522c1d00d5',
+          pid: '6051ad90e93db6522c1d00d2',
+          name: 'Php研发部',
+        },
+      ];
+
+      function handleData(data) {
+        let newData = [];
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          if (!element.children && element.pid === '0') {
+            element.children = [];
+            newData.push(element);
+          }
+        }
+        for (let index = 0; index < newData.length; index++) {
+          const element = newData[index];
+          if (element.name === '财务部') {
+            element.children.push(data[3]);
+            element.children.push(data[4]);
+            element.children.push(data[5]);
+          }
+        }
+        for (let index = 0; index < newData.length; index++) {
+          const element = newData[index];
+          if (element.name === '技术部') {
+            element.children.push(data[7]);
+            element.children.push(data[8]);
+            element.children.push(data[9]);
+          }
+        }
+        return newData;
+      }
+
+      handleData(data);
+    </script>
+  </body>
+</html>

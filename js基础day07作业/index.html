@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let sales = [
+        { name: '小明', age: 18, gender: '男', money: 30, status: 0 },
+        { name: '小红', age: 26, gender: '女', money: 99, status: 3 },
+        { name: '小刚', age: 19, gender: '男', money: 88, status: 2 },
+        { name: '小丽', age: 20, gender: '女', money: 67, status: 1 },
+        { name: '晓强', age: 23, gender: '女', money: 77, status: 1 },
+        { name: '小张', age: 25, gender: '女', money: 80, status: 2 },
+      ];
+
+      sales.sort((a, b) => b.money - a.money);
+
+      console.log(sales);
+      let html = `<table>
+      <tr>
+        <th>名次</th>
+        <th>姓名</th>
+        <th>年纪</th>
+        <th>性别</th>
+        <th>销售额</th>
+        <th>业绩状态</th>
+      </tr>`;
+
+      for (let index = 0; index < sales.length; index++) {
+        const element = sales[index];
+        html += `
+        <tr>
+        <td>${index + 1}</td>
+        <td>${element.name}</td>
+        <td>${element.age}</td>
+        <td>${element.gender}</td>
+        <td>${element.money}w</td>
+        <td>${
+          element.status === 0
+            ? '未及格'
+            : element.status === 1
+            ? '及格'
+            : element.status === 2
+            ? '良好'
+            : '优秀'
+        }</td>
+
+      </tr>
+
+        `;
+      }
+
+      html += `</table>`;
+      document.write(html);
+    </script>
+  </body>
+</html>
