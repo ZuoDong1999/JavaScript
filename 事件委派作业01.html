@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table id="table">
+      <tr>
+        <td>单元格1-1</td>
+        <td>单元格1-2</td>
+        <td>单元格1-3</td>
+      </tr>
+      <tr>
+        <td>单元格2-1</td>
+        <td>单元格2-2</td>
+        <td>单元格2-3</td>
+      </tr>
+      <tr>
+        <td>单元格3-1</td>
+        <td>单元格3-2</td>
+        <td>单元格3-3</td>
+      </tr>
+    </table>
+    <script>
+      const tables = document.querySelector('#table');
+      tables.addEventListener('click', function (e) {
+        if (e.target.tagName === 'TD') {
+          console.log(e.target);
+        }
+      });
+    </script>
+  </body>
+</html>
