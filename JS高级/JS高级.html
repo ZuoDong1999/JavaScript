@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const orders = [
+        {
+          id: 1,
+          name: 'John Smith',
+          address: '123 Main St',
+          status: 'created',
+          log: [
+            {
+              status: 'created',
+              time: '2023-02-16 12:30:00',
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: 'Jane Doe',
+          address: '456 Second St',
+          status: 'packed',
+          log: [
+            {
+              status: 'created',
+              time: '2023-02-16 10:00:00',
+            },
+            {
+              status: 'packed',
+              time: '2023-02-16 12:30:00',
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: 'Bob Johnson',
+          address: '789 Third St',
+          status: 'shipped',
+          log: [
+            {
+              status: 'created',
+              time: '2023-02-19 10:00:00',
+            },
+            {
+              status: 'packed',
+              time: '2023-02-17 12:00:00',
+            },
+            {
+              status: 'shipped',
+              time: '2023-02-16 9:00:00',
+            },
+          ],
+        },
+      ];
+
+      function getOrdersByStatus(str) {
+        return orders
+          .filter((element) => {
+            return element.status === str;
+          })
+          .map((item) => {
+            const { id, name, address, status, log } = item;
+            return {
+              id: id,
+              name: name,
+              address: address,
+              status: status,
+              log: log.filter((item) => {
+                return item.status === str;
+              }),
+            };
+          })
+          .sort((a, b) => {
+            return a.id - b.id;
+          });
+      }
+      function getOrderStatusHistory(id) {
+        const realArr = orders.filter((item) => {
+          return item.id === id;
+        });
+        const findResult = orders
+          .find((item) => {
+            return item.id === id;
+          })
+          .log.sort((a, b) => {
+            return new Date(a.time) - new Date(b.time);
+          })
+          .map((item) => {
+            return `[${item.time}] ${item.status}`;
+          })
+          .join('\n');
+        console.log(realArr);
+        console.log(findResult);
+      }
+      // console.log(getOrdersByStatus('shipped'));
+      getOrderStatusHistory(3);
+    </script>
+  </body>
+</html>

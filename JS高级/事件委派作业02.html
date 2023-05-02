@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let loginList = [
+        { userName: 'admin', password: 'admin321' },
+        { userName: 'zhangsan', password: 'zs321' },
+        { userName: 'lisi', password: 'ls321' },
+        { userName: 'yyqx', password: 'yyqx321' },
+      ];
+      let userInfo = {
+        token1: {
+          city: '杭州',
+          money: '1000w',
+          sex: '女',
+          userName: 'admin',
+          password: 'admin321',
+        },
+        token2: {
+          city: '北京',
+          money: '1100w',
+          sex: '女',
+          userName: 'zhangsan',
+          password: 'zs321',
+        },
+        token3: {
+          city: '北京',
+          money: '800w',
+          sex: '男',
+          userName: 'lisi',
+          password: 'ls321',
+        },
+        token4: {
+          city: '天津',
+          money: '600w',
+          sex: '男',
+          userName: 'yyqx',
+          password: 'yyqx321',
+        },
+      };
+      // let flag = 'token' + Math.floor(Math.random() * 4 + 1);
+      // console.log(flag);
+      function students(loginList, userInfo) {
+        while (true) {
+          let userName = prompt('请输入用户名');
+          let password = prompt('请输入密码');
+          for (let i = 0; i < loginList.length; i++) {
+            //判断登录成功
+            if (
+              userName === loginList[i].userName &&
+              password === loginList[i].password
+            ) {
+              let flag = 'token' + Math.floor(Math.random() * 4 + 1);
+              console.log(flag);
+              for (let k in userInfo) {
+                if (flag === k) {
+                  // console.log(k);
+                  alert(
+                    `登陆成功 具体用户信息:\ncity: ${userInfo[k].city},\nmoney: ${userInfo[k].money},\nsex: ${userInfo[k].sex},\nuserName: ${userName},`
+                  );
+                  break;
+                }
+              }
+              break;
+            }
+
+            //判断登录失败
+            else {
+              let option = +prompt(
+                `账号不存在，请选择\n 1.注册\n 2.直接退出\n`
+              );
+              let time = 0;
+              if (time >= 2) {
+                alert('登陆失败 再无机会');
+              }
+              if (option === 2) {
+                return 0;
+              }
+              if (option === 1) {
+                let userName = prompt('请输入用户名');
+                let password = prompt('请输入密码');
+                time += 1;
+                loginList.push({
+                  userName: `${userName}`,
+                  password: `${password}`,
+                });
+                alert(`你已注册成功，
+             `);
+                console.log(loginList);
+                break;
+              }
+            }
+          }
+        }
+      }
+      students(loginList, userInfo);
+    </script>
+  </body>
+</html>
